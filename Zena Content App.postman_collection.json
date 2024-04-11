@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "e9fea6d1-bfda-4e23-bb10-675cd1940159",
+		"name": "Zena Content App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3948817"
+	},
+	"item": [
+		{
+			"name": "compliance user",
+			"item": [
+				{
+					"name": "Guidelines Listing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/guidelines/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"guidelines",
+								""
+							]
+						},
+						"description": "Returns a list of GuideLines"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Guideline",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Do not use discriminative language in your content\",\n    \"description\": \"Do not use discriminative language in your content in Job Description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/guidelines/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"guidelines",
+								""
+							]
+						},
+						"description": "Create a new Guideline\n\n- Title: Heading of the guideline\n    \n- Description: Description of the guideline\n    \n\n**Note:** Guideline Title is a unique field, that is, there can't be 2 Guidelines with the same title."
+					},
+					"response": []
+				},
+				{
+					"name": "Retreive Guideline",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/guidelines/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"guidelines",
+								"1"
+							]
+						},
+						"description": "Returns a specific Guideline"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Guideline",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Do not use abusive language/curse words in your content\",\n    \"description\": \"Do not use abusive language/curse words in your content in Job Description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/guidelines/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"guidelines",
+								"1",
+								""
+							]
+						},
+						"description": "Update Existing Guideline"
+					},
+					"response": []
+				}
+			],
+			"description": "APIs for the Compliance user"
+		},
+		{
+			"name": "Author user",
+			"item": [
+				{
+					"name": "Content Listing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/content/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"content",
+								""
+							]
+						},
+						"description": "List down all the Content uploaded, along with all the versions of the content and their verdict for each guidelines."
+					},
+					"response": []
+				},
+				{
+					"name": "Create/Add Content",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "content_file",
+									"type": "file",
+									"src": "/home/aydev/Documents/test.py"
+								},
+								{
+									"key": "name",
+									"value": "New content",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/content/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"content",
+								""
+							]
+						},
+						"description": "Add a new Content\n\n- name: Name to identify the content\n    \n- content_file: the content file"
+					},
+					"response": []
+				},
+				{
+					"name": "Retreive Content",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/content/2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"content",
+								"2",
+								""
+							]
+						},
+						"description": "Fetch a specific content from DB"
+					},
+					"response": []
+				},
+				{
+					"name": "Content Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "content_file",
+									"type": "file",
+									"src": "/home/aydev/Documents/test.py"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/content/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"content",
+								"1",
+								""
+							]
+						},
+						"description": "Update the content file"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Status (Latest Version)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/content/1/check_status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"content",
+								"1",
+								"check_status"
+							]
+						},
+						"description": "Check the status of the latest version of the content"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Status (Specific Version)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/content/1/check_status?version_id=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"content",
+								"1",
+								"check_status"
+							],
+							"query": [
+								{
+									"key": "version_id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Check the status of a specific version of the content"
+					},
+					"response": []
+				}
+			],
+			"description": "##### APIs for Content Creator/Author User"
+		},
+		{
+			"name": "Reviewer",
+			"item": [
+				{
+					"name": "Review Content",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_passed\": true,\n    \"content_version\": 4,\n    \"guideline\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/guideline-check/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"guideline-check",
+								""
+							]
+						},
+						"description": "Api to mark the verdict of the content for a specific Guideline\n\n- content_version: id of the version of content being evaluated\n- guideline: id of the guideline on which reviewer is evaluating the content\n- is_passed: true is the content has passed the evaluation, otherwise false"
+					},
+					"response": []
+				}
+			],
+			"description": "###### APIs for the Reviewer User"
+		}
+	]
+}

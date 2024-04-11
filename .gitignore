@@ -1,0 +1,8 @@
+# Database files
+db.sqlite3
+
+# Media Files
+media/*
+
+# Python cache file
+*.pyc
