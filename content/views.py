@@ -10,8 +10,8 @@ class GuidelineView(viewsets.ModelViewSet):
 
 
 class ContentView(viewsets.ModelViewSet):
-    queryset = Content.objects.all().prefetch_related('versions')
-    # serializer_class = serializers.ContentSerializer
+    queryset = Content.objects.all()\
+        .prefetch_related('versions', 'versions__guideline_checks')
 
     def get_serializer_class(self):
         if self.action in ['create', 'update', 'partial_update']:
